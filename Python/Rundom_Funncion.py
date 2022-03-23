@@ -1,4 +1,8 @@
+#Библиотеки
+from PyQt5 import QtWidgets, uic
 
+# Импортируем библиотеки для работы с ком портом
+from PyQt5.QtSerialPort import QSerialPort, QSerialPortInfo
 
 def print_bebra():
     print( "bebra")
@@ -7,3 +11,6 @@ def print_bebra():
 
 def print_niggers():
     print( "niggers")
+
+def OpenPort(serial):
+    print("adadadda")
