@@ -99,26 +99,29 @@ print(s.Get_info_about_portlist())
 # по клику на PortListComboBox вызываем функцию проверка на нажатие
 ko.PortListComboBox.currentIndexChanged.connect(print_bebra)
 
+# ko.OpenPortButton.setText('ffffff')
 
 # при нажатии на кнопку вызываем функцию открытия порта
-ko.OpenPortButton.clicked.connect(lambda : s.OpenPort(ko))  #ээээ как это делать ko.OpenPortButton.clicked.connect(lambda x: s.OpenPort(ko))
+ko.OpenPortButton.clicked.connect(lambda: s.OpenPortByComboBox(ko))  #ээээ как это делать ko.OpenPortButton.clicked.connect(lambda x: s.OpenPort(ko))
 
 #если в порт поступли сообщения, то читаем их
-s.serial.readyRead.connect(lambda : s.ReadSerial(ko))
+s.serial.readyRead.connect(lambda: s.ReadSerial(ko))
 
 # при нажатии на кнопку вызываем функцию окрытия порта
 ko.ClosePortButton.clicked.connect(s.ClosePort)
 
 
-
+# при нажатиии отправляем в порт текст из строчки
 ko.SendButton.clicked.connect(lambda: s.SerialSend(ko.SendTextWindow.displayText()))
+
+# при нажатии подключаемся к ардуино
+ko.ArduinoConnectButton.clicked.connect(lambda: s.Arduino_Connect(ko))
 # при нажатии на галочку вызываем функцию
 # ko.RGBSlider_R.valueChanged.connect(RGBControl)
 # # при нажатии на галочку вызываем функцию
 # ko.RGBSlider_G.valueChanged.connect(RGBControl)
 # # при нажатии на галочку вызываем функцию
 # ko.RGBSlider_B.valueChanged.connect(RGBControl)
-#
 # ko.dial.valueChanged.connect(ServoControl)
 
 # пр изменени
