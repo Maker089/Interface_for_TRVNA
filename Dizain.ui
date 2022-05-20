@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>654</width>
+    <width>672</width>
     <height>528</height>
    </rect>
   </property>
@@ -186,7 +186,7 @@
     <rect>
      <x>380</x>
      <y>80</y>
-     <width>271</width>
+     <width>241</width>
      <height>89</height>
     </rect>
    </property>
@@ -208,7 +208,7 @@
     <rect>
      <x>380</x>
      <y>200</y>
-     <width>271</width>
+     <width>241</width>
      <height>49</height>
     </rect>
    </property>
@@ -230,6 +230,25 @@
       </property>
       <property name="value">
        <number>24</number>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>290</y>
+     <width>241</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QPushButton" name="VNA_Button">
+      <property name="text">
+       <string>Start to connect VNA</string>
       </property>
      </widget>
     </item>

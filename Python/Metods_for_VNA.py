@@ -6,12 +6,13 @@ from PyQt5.QtCore import QIODevice
 # Импортируем библиотеки для работы с ком портом
 from PyQt5.QtSerialPort import QSerialPort, QSerialPortInfo
 
-class MetodsPorts:
+class Metods_Ports_For_Arduino:
     def __init__(self):
         """создаю сериал порт"""
         self.serial = QSerialPort()
         self.serial.setBaudRate(57600)
         self.portlist = []
+        self.start_mod_for_Read_Serial  =True
         ports = QSerialPortInfo().availablePorts()
         '''ищу порты'''
         for port in ports:
@@ -35,14 +36,21 @@ class MetodsPorts:
         print("закрыт порт ", self.serial.portName())
 
     def ReadSerial(self,uic_modul):
-        mass_simbols = self.serial.readLine()
-        mass_simbols_str = str(mass_simbols, 'utf-8').strip()
-        print(mass_simbols_str)
-        StR = mass_simbols_str.split(',')
-        if StR[0] == '0':
-            uic_modul.ProgressBar.setValue(int(StR[3]))
-            uic_modul.TextTemp.setValue(int(StR[3]))
-            print(StR[3])
+        max_simbol_for_read = 1
+        limit_for_while = 100;
+        simbol = ''
+        simbol_for_replace = "'"
+        mass_simbols = []
+        count_limit = 0
+        start_mod_limit = 5
+        self.start_mod_for_Read_Serial = False
+
+        while simbol != "'\\n'" and count_limit != limit_for_while and self.start_mod_for_Read_Serial == False:
+            simbol = str(self.serial.read(max_simbol_for_read))[1:]
+            mass_simbols.append(simbol.replace(simbol_for_replace,""))
+            count_limit +=1
+        print("Message: ", mass_simbols)
+        return
 
     def SerialSend(self,data):
         self.serial.write(data.encode())
@@ -68,5 +76,3 @@ class MetodsPorts:
 
 
 
-er = MetodsPorts()
-print(er.Get_info_about_portlist())
