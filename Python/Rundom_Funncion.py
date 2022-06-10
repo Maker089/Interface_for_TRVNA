@@ -1,4 +1,5 @@
 #Библиотеки
+import  math
 from PyQt5 import QtWidgets, uic
 
 # Импортируем библиотеки для работы с ком портом
@@ -14,3 +15,4 @@ def print_niggers():
 
 def OpenPort(serial):
     print("adadadda")
+print(math.tan(3/50))
